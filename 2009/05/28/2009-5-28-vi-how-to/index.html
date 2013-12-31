@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Linux学习笔记之-vi命令用法 | FixBeta</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="og:type" content="blog">
+<meta name="og:title" content="Linux学习笔记之-vi命令用法">
+<meta name="og:url" content="http://www.fixbeta.com/2009/05/28/2009-5-28-vi-how-to/">
+<meta name="og:image">
+<meta name="og:site_name" content="FixBeta">
+<meta name="og:description" content="一、Unix编辑器概述
+编辑器是使用计算机的重要工具之一，在各种操作系统中，编辑器都是必不可少的部件。Unix及其相似的ix 操作系统系列中，为方便各种用户在各个不同的环境中使用，提供了一系列的ex编辑器，包括 ex, edit,ed 和 vi.其中ex,edit,ed都是行编辑器，现在已很少有人使用，Unix提供他们的原因是考虑到满足各种用户特别是某些终端用户的需要。值得庆幸的是，Unix提供了">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternative" href="/atom.xml" title="FixBeta" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="http://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">FixBeta</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><input type="submit" value="&#xF002;" class="search-form-submit"><input type="hidden" name="q" value="site:http://www.fixbeta.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-2009-5-28-vi-how-to" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2009/05/28/2009-5-28-vi-how-to/" class="article-date">
+  <time datetime="2009-05-28T13:45:36.000Z" itemprop="datePublished">5月 28 2009</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/运维那些事/">运维那些事</a>►<a class="article-category-link" href="/categories/运维那些事/关于网络/">关于网络</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Linux学习笔记之-vi命令用法
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="-4e00-3001-Unix-7f16-8f91-5668-6982-8ff0-">一、Unix编辑器概述</h3>
+<p>编辑器是使用计算机的重要工具之一，在各种操作系统中，编辑器都是必不可少的部件。Unix及其相似的ix 操作系统系列中，为方便各种用户在各个不同的环境中使用，提供了一系列的ex编辑器，包括 ex, edit,ed 和 vi.其中ex,edit,ed都是行编辑器，现在已很少有人使用，Unix提供他们的原因是考虑到满足各种用户特别是某些终端用户的需要。值得庆幸的是，Unix提供了全屏幕的Vi编辑器，这使我们的工作轻松不少。不少DOS用户抱怨Vi编辑器不象 DOS下的编辑器如edit那么好用，这是因为Vi考虑到各种用户的需要，没有使用某些通用的编辑键（在各个不同的终端机上他们的定义是不同的，在某些终端机上甚至没有这些键）。而是采用状态切换的方法，但这只是习惯的问题，一旦你熟练的使用上了vi你就会觉得它其实也很好用。</p>
+<p><a id="more"></a><br>虽然 Vi采用了状态切换的方法，但电脑的硬件及操作系统多种多样，某些电脑的键盘上没有特定的几个功能键！那麽不就有某些功能不能用了？这个问题在 Unix 系统上也一样，几乎各大电脑厂商都有自己的 Unix 系统，而 vi 的操作方法也会随之有点出入。这里我们采用 PC 的键盘来说明 vi 的操作，但在具体的环境中还要参考相应的资料，这一点是值得注意的。</p>
+<h3 id="-4e8c-3001-Vi-5165-95e8-">二、Vi入门</h3>
+<h4 id="1-3001-8fdb-5165-vi">1、进入vi</h4>
+<p>在系统提示字符(如$、#)下敲入vi ＜档案名称＞，vi 可以自动帮你载入所要编辑的文件或是开启一个新文件（如果该文件不存在或缺少文件名）。进入 vi 后屏幕左方会出现波浪符号，凡是列首有该符号就代表此列目前是空的。</p>
+<h4 id="2-3001-4e24-79cd-6a21-5f0f-">2、两种模式</h4>
+<p>如上所述，vi存在两种模式：指令模式和输入模式。在指令模式下输入的按键将做为指令来处理：如输入 a，vi即认为是在当前位置插入字符。而在输入模式下，vi则把输入的按键当作插入的字符来处理。指令模式切换到输入模式只需键入相应的输入命令即可（如a,A），而要从输入模式切换到指令模式，则需在输入模式下键入ESC键，如果不晓得现在是处於什么模式，可以多按几次 [ESC]，系统如发出哔哔声就表示已处于指令模式下了。<br>付：在指令模式进入输入模式的指令：<br>新增 (append)</p>
+<pre><code><span class="title">a</span> ：从光标所在位置後面开始新增资料，光标後的资料随新增资料向後移动。
+<span class="type">A</span>：从光标所在列最後面的地方开始新增资料。
+</code></pre><p>插入 (insert)</p>
+<pre><code><span class="title">i</span>：从光标所在位置前面开始插入资料，光标後的资料随新增资料向後移动。
+<span class="type">I</span> ：从光标所在列的第一个非空白字元前面开始插入资料。
+</code></pre><p>开始 (open)</p>
+<pre><code><span class="title">o</span> ：在光标所在列下新增一列并进入输入模式。
+<span class="type">O</span>: 在光标所在列上方新增一列并进入输入模式。
+</code></pre><h4 id="3-3001-9000-51fa-vi">3、退出vi</h4>
+<p>在指令模式下键入</p>
+<pre><code><span class="attribute">:q,:q!,</span>
+<span class="attribute">:wq或:x(注意:号），</span>
+</code></pre><p>就会退出vi。其中:wq和:x是存盘退出，而:q是直接退出，如果文件已有新的变化，vi会提示你保存文件而:q命令也会失效，这时你可以用:w命令保存文件后再用:q 退出，或用:wq或:x命令退出，如果你不想保存改变后的文件，你就需要用:q!命令，这个命令将不保存文件而直接退出vi。</p>
+<h4 id="4-3001-57fa-672c-7f16-8f91-">4、基本编辑</h4>
+<p>配合一般键盘上的功能键，像是方向键、[Insert] 、[Delete] 等等，现在你应该已经可以利用 vi 来编辑文件了。当然 vi 还提供其他许许多多功能让文字的处理更为方便。<br>何谓编辑？一般认为是文字的新增、修改以及删除，甚至包括文字区块的搬移、复制等等。先这里介绍 vi 的如何做删除与修改。（注意：在 vi 的原始观念里，输入跟编辑是两码子事。编辑是在指令模式下操作的，先利用指令移动光标来定位要进行编辑的地方，然後才下指令做编辑。）</p>
+<p>删除与修改文件的命令：</p>
+<pre><code><span class="title">x</span>：删除光标所在字符。
+<span class="title">dd</span> ：删除光标所在的列。
+<span class="title">r</span> ：修改光标所在字元，r 後接著要修正的字符。
+<span class="type">R</span>：进入取替换状态，新增文字会覆盖原先文字，直到按 [<span class="type">ESC</span>] 回到指令模式下为止。
+<span class="title">s</span>：删除光标所在字元，并进入输入模式。
+<span class="type">S</span>：删除光标所在的列，并进入输入模式。
+</code></pre><p>其实呢，在PC上根本没有这么麻烦！输入跟编辑都可以在输入模式下完成。例如要删除字元，直接按 [Delete] 不就得了。而插入状态与取代状态可以直接用 [Insert] 切换，犯不着用什麽指令模式的编辑指令。不过就如前面所提到的，这些指令几乎是每台终端机都能用，而不是仅仅在 PC 上。在指令模式下移动光标的基本指令是 h, j, k, l 。想来各位现在也应该能猜到只要直接用 PC 的方向键就可以了，而且无论在指令模式或输入模式下都可以。多容易不是。当然 PC 键盘也有不足之处。有个很好用的指令 u 可以恢复被删除的文字，而 U 指令则可以恢复光标所在列的所有改变。这与某些电脑上的 [Undo] 按键功能相同。</p>
+<h3 id="-4e09-3001-9644-4ef6-ff1a-vi-8be6-7ec6-6307-4ee4-8868-">三、附件：vi详细指令表</h3>
+<h4 id="1-3001-8fdb-5165-vi-7684-547d-4ee4-">1、进入vi的命令</h4>
+<pre><code><span class="title">vi</span> filename: 打开或新建文件，并将光标置于第一行首
+
+<span class="title">vi</span> +n filename: 打开文件，并将光标置于第n行首
+
+<span class="title">vi</span> + filename: 打开文件，并将光标置于最后一行首
+
+<span class="title">vi</span> +/pattern filename: 打开文件，并将光标置于第一个与pattern匹配的串处
+
+<span class="title">vi</span> -r filename: 在上次正用vi编辑时发生系统崩溃，恢复filename
+
+<span class="title">vi</span> filename….filename: 打开多个文件，依次进行编辑
+</code></pre><h4 id="2-3001-79fb-52a8-5149-6807-7c7b-547d-4ee4-">2、移动光标类命令</h4>
+<pre><code><span class="attribute">h</span>: 光标左移一个字符
+<span class="attribute">l</span>: 光标右移一个字符
+<span class="attribute">space</span>: 光标右移一个字符
+<span class="attribute">Backspace</span>: 光标左移一个字符
+k或Ctrl+<span class="attribute">p</span>: 光标上移一行
+j或Ctrl+<span class="attribute">n</span>: 光标下移一行
+<span class="attribute">Enter</span>: 光标下移一行
+w或W : 光标右移一个字至字首
+b或B : 光标左移一个字至字首
+e或E : 光标右移一个字至字尾
+): 光标移至句尾
+(: 光标移至句首
+}: 光标移至段落开头
+{: 光标移至段落结尾
+<span class="attribute">nG</span>: 光标移至第n行首
+n+: 光标下移n行
+n-: 光标上移n行
+<span class="attribute">n$</span>: 光标移至第n行尾
+<span class="attribute">H</span>: 光标移至屏幕顶行
+<span class="attribute">M</span>: 光标移至屏幕中间行
+<span class="attribute">L</span>: 光标移至屏幕最后行
+<span class="number">0</span>: 光标移至当前行首
+<span class="attribute">$</span>: 光标移至当前行尾
+</code></pre><h4 id="3-3001-5c4f-5e55-7ffb-6eda-7c7b-547d-4ee4-">3、屏幕翻滚类命令</h4>
+<pre><code><span class="attribute">Ctrl+u</span>: <span class="string">向文件首翻半屏</span>
+<span class="attribute">Ctrl+d</span>: <span class="string">向文件尾翻半屏</span>
+<span class="attribute">Ctrl+f</span>: <span class="string">向文件尾翻一屏</span>
+<span class="attribute">Ctrl＋b</span>: <span class="string">向文件首翻一屏</span>
+<span class="attribute">nz</span>: <span class="string">将第n行滚至屏幕顶部，不指定n时将当前行滚至屏幕顶部。</span>
+</code></pre><h4 id="4-3001-63d2-5165-6587-672c-7c7b-547d-4ee4-">4、插入文本类命令</h4>
+<pre><code><span class="attribute">i</span>: <span class="string">在光标前</span>
+<span class="attribute">I</span>: <span class="string">在当前行首</span>
+<span class="attribute">a</span>: <span class="string">光标后</span>
+<span class="attribute">A</span>: <span class="string">在当前行尾</span>
+<span class="attribute">o</span>: <span class="string">在当前行之下新开一行</span>
+<span class="attribute">O</span>: <span class="string">在当前行之上新开一行</span>
+<span class="attribute">r</span>: <span class="string">替换当前字符</span>
+<span class="attribute">R</span>: <span class="string">替换当前字符及其后的字符，直至按ESC键</span>
+<span class="attribute">s</span>: <span class="string">从当前光标位置处开始，以输入的文本替代指定数目的字符</span>
+<span class="attribute">S</span>: <span class="string">删除指定数目的行，并以所输入文本代替之</span>
+<span class="attribute">ncw或nCW</span>: <span class="string">修改指定数目的字</span>
+<span class="attribute">nCC</span>: <span class="string">修改指定数目的行</span>
+</code></pre><h4 id="5-3001-5220-9664-547d-4ee4-">5、删除命令</h4>
+<pre><code><span class="attribute">ndw或ndW</span>: <span class="string">删除光标处开始及其后的n-1个字</span>
+<span class="attribute">do</span>: <span class="string">删至行首</span>
+<span class="attribute">d$</span>: <span class="string">删至行尾</span>
+<span class="attribute">ndd</span>: <span class="string">删除当前行及其后n-1行</span>
+<span class="attribute">x或X</span>: <span class="string">删除一个字符，x删除光标后的，而X删除光标前的</span>
+<span class="attribute">Ctrl+u</span>: <span class="string">删除输入方式下所输入的文本</span>
+</code></pre><h4 id="6-3001-641c-7d22-53ca-66ff-6362-547d-4ee4-">6、搜索及替换命令</h4>
+<pre><code>/pattern: 从光标开始处向文件尾搜索pattern
+?pattern: 从光标开始处向文件首搜索pattern
+n: 在同一方向重复上一次搜索命令
+N: 在反方向上重复上一次搜索命令
+<span class="attribute">:s/p1/p2/g:</span> 将当前行中所有p1均用p2替代
+<span class="attribute">:n1,n2s/p1/p2/g:</span> 将第n1至n2行中所有p1均用p2替代
+<span class="attribute">:g/p1/s//p2/g:</span> 将文件中所有p1均用p2替换
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.fixbeta.com/2009/05/28/2009-5-28-vi-how-to/" data-id="zzupxnva8r1gk5w8" class="article-share-link">Share</a>
+      
+        <a href="http://www.fixbeta.com/2009/05/28/2009-5-28-vi-how-to/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LINUX/">LINUX</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vi/">vi</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/运维/">运维</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2009/09/24/2009-9-24-Linux-CMD-start/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          CentOS 设置命令行界面启动
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
+</article>
+
+
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+</section>
+        
+      </div>
+      <footer id="footer">
+  
+    <aside id="sidebar" class="outer">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Centos/" style="font-size: 16.00px;">Centos</a><a href="/tags/LINUX/" style="font-size: 20.00px;">LINUX</a><a href="/tags/Nginx/" style="font-size: 14.00px;">Nginx</a><a href="/tags/VNC/" style="font-size: 10.00px;">VNC</a><a href="/tags/VPN/" style="font-size: 10.00px;">VPN</a><a href="/tags/WIFI遥控/" style="font-size: 10.00px;">WIFI遥控</a><a href="/tags/centos/" style="font-size: 10.00px;">centos</a><a href="/tags/vi/" style="font-size: 10.00px;">vi</a><a href="/tags/webbench/" style="font-size: 10.00px;">webbench</a><a href="/tags/压力测试/" style="font-size: 10.00px;">压力测试</a><a href="/tags/反向代理/" style="font-size: 12.00px;">反向代理</a><a href="/tags/编程/" style="font-size: 10.00px;">编程</a><a href="/tags/网络/" style="font-size: 14.00px;">网络</a><a href="/tags/运维/" style="font-size: 18.00px;">运维</a>
+    </div>
+  </div>
+
+  
+</aside>
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2013 V2CD.COM<br>
+      Powered by <a href="http://zespia.tw/hexo/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+<script>
+  var disqus_shortname = 'v2cd';
+  
+  var disqus_url = 'http://www.fixbeta.com/2009/05/28/2009-5-28-vi-how-to/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//go.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script type="text/javascript" src="/js/script.js"></script>
+  </div>
+</body>
+</html>

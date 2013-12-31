@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Linux学习笔记之-利用webbench进行网站压力测试 | FixBeta</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="og:type" content="blog">
+<meta name="og:title" content="Linux学习笔记之-利用webbench进行网站压力测试">
+<meta name="og:url" content="http://www.fixbeta.com/2011/11/09/2011-11-09-nginx-command/">
+<meta name="og:image">
+<meta name="og:site_name" content="FixBeta">
+<meta name="og:description" content="webbench是linux下网站进行压力测试的一个工具，最多可以模拟3万个并发连接去测试网站的负载能力，比Apache自带的ab压力测试工具好，安装使用也比较方便。
+1.安装：
+安装前首先需要安装gcc和ctags
+yum install gcc*    安装ctags
+yum install ctags   安装webbench
+wget http://blog.s135.com/soft/l">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternative" href="/atom.xml" title="FixBeta" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="http://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">FixBeta</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><input type="submit" value="&#xF002;" class="search-form-submit"><input type="hidden" name="q" value="site:http://www.fixbeta.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-2011-11-09-nginx-command" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2011/11/09/2011-11-09-nginx-command/" class="article-date">
+  <time datetime="2011-11-09T13:45:36.000Z" itemprop="datePublished">11月 9 2011</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/关于网络/">关于网络</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Linux学习笔记之-利用webbench进行网站压力测试
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>webbench是linux下网站进行压力测试的一个工具，最多可以模拟3万个并发连接去测试网站的负载能力，比Apache自带的ab压力测试工具好，安装使用也比较方便。<br><a id="more"></a></p>
+<p>1.安装：</p>
+<p>安装前首先需要安装gcc和ctags</p>
+<pre><code><span class="title">yum</span> install gcc*    安装ctags
+<span class="title">yum</span> install ctags   安装webbench
+<span class="title">wget</span> http://blog.s135.com/soft/linux/webbench/webbench-<span class="number">1.5</span>.tar.gztar zxvf webbench-<span class="number">1.5</span>.tar.gz 
+<span class="title">cd</span> webbench-<span class="number">1.5</span>
+<span class="title">make</span> mkdir /usr/local/man 
+<span class="title">make</span> install
+</code></pre><p>2.使用方法：</p>
+<pre><code><span class="comment">webbench</span> <span class="literal">-</span><span class="comment">c</span> <span class="comment">500</span> <span class="literal">-</span><span class="comment">t</span> <span class="comment">30</span> <span class="comment">http://127</span><span class="string">.</span><span class="comment">0</span><span class="string">.</span><span class="comment">0</span><span class="string">.</span><span class="comment">1/test</span><span class="string">.</span><span class="comment">jpg参数说明：</span><span class="literal">-</span><span class="comment">c表示并发数，</span><span class="literal">-</span><span class="comment">t表示时间(秒)</span>
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.fixbeta.com/2011/11/09/2011-11-09-nginx-command/" data-id="uzktodklvaswvwap" class="article-share-link">Share</a>
+      
+        <a href="http://www.fixbeta.com/2011/11/09/2011-11-09-nginx-command/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LINUX/">LINUX</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webbench/">webbench</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/压力测试/">压力测试</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/运维/">运维</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2012/08/18/2012-08-18-nginx-redirect/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          利用nginx反向代理实现网站更改地址后的重定向
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2011/09/29/2011-09-29-linux-setup-nginx/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Linux学习笔记之-Centos5.5 安装nginx1.0.8配置反向代理</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+</section>
+        
+      </div>
+      <footer id="footer">
+  
+    <aside id="sidebar" class="outer">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Centos/" style="font-size: 16.00px;">Centos</a><a href="/tags/LINUX/" style="font-size: 20.00px;">LINUX</a><a href="/tags/Nginx/" style="font-size: 14.00px;">Nginx</a><a href="/tags/VNC/" style="font-size: 10.00px;">VNC</a><a href="/tags/VPN/" style="font-size: 10.00px;">VPN</a><a href="/tags/WIFI遥控/" style="font-size: 10.00px;">WIFI遥控</a><a href="/tags/centos/" style="font-size: 10.00px;">centos</a><a href="/tags/vi/" style="font-size: 10.00px;">vi</a><a href="/tags/webbench/" style="font-size: 10.00px;">webbench</a><a href="/tags/压力测试/" style="font-size: 10.00px;">压力测试</a><a href="/tags/反向代理/" style="font-size: 12.00px;">反向代理</a><a href="/tags/编程/" style="font-size: 10.00px;">编程</a><a href="/tags/网络/" style="font-size: 14.00px;">网络</a><a href="/tags/运维/" style="font-size: 18.00px;">运维</a>
+    </div>
+  </div>
+
+  
+</aside>
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2013 V2CD.COM<br>
+      Powered by <a href="http://zespia.tw/hexo/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+<script>
+  var disqus_shortname = 'v2cd';
+  
+  var disqus_url = 'http://www.fixbeta.com/2011/11/09/2011-11-09-nginx-command/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//go.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script type="text/javascript" src="/js/script.js"></script>
+  </div>
+</body>
+</html>

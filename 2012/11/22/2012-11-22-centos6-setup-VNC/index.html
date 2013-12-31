@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Linux学习笔记之-CentOS 6安装和配置VNC | FixBeta</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="og:type" content="blog">
+<meta name="og:title" content="Linux学习笔记之-CentOS 6安装和配置VNC">
+<meta name="og:url" content="http://www.fixbeta.com/2012/11/22/2012-11-22-centos6-setup-VNC/">
+<meta name="og:image">
+<meta name="og:site_name" content="FixBeta">
+<meta name="og:description" content="VNC是Linux上的一款非常优秀的远程控制工具软件，通常我们在Windows上面安装vnc客户端软件来远程访问Linux机器(Windows上常用的客户端RealVNC)，要远程连接到Linux首先要确保Linux上面已经安装了VNC server，下面以CentOS 6为例来说明：
+
+
+1.查看本机是否有安装vnc
+rpm -q vnc vnc-server
+如果显示结果为：
+package">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternative" href="/atom.xml" title="FixBeta" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="http://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">FixBeta</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><input type="submit" value="&#xF002;" class="search-form-submit"><input type="hidden" name="q" value="site:http://www.fixbeta.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-2012-11-22-centos6-setup-VNC" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2012/11/22/2012-11-22-centos6-setup-VNC/" class="article-date">
+  <time datetime="2012-11-22T13:45:36.000Z" itemprop="datePublished">11月 22 2012</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/关于网络/">关于网络</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Linux学习笔记之-CentOS 6安装和配置VNC
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>VNC是Linux上的一款非常优秀的远程控制工具软件，通常我们在Windows上面安装vnc客户端软件来远程访问Linux机器(Windows上常用的客户端RealVNC)，要远程连接到Linux首先要确保Linux上面已经安装了VNC server，下面以CentOS 6为例来说明：</p>
+<a id="more"></a>
+
+<h4 id="1-67e5-770b-672c-673a-662f-5426-6709-5b89-88c5-vnc">1.查看本机是否有安装vnc</h4>
+<pre><code><span class="comment">rpm</span> <span class="literal">-</span><span class="comment">q</span> <span class="comment">vnc</span> <span class="comment">vnc</span><span class="literal">-</span><span class="comment">server</span>
+</code></pre><p>如果显示结果为：</p>
+<pre><code><span class="package"><span class="keyword">package</span> <span class="title">vnc</span> <span class="title">is</span> <span class="title">not</span> <span class="title">installed</span>
+<span class="title">vnc</span>-<span class="title">server</span>-4.1.2-14.<span class="title">e15_3</span>.1</span>
+</code></pre><p>么，机器上已经安装了vnc。</p>
+<h4 id="2-628a-8fdc-7a0b-684c-9762-7684-7528-6237-52a0-5165-5230-914d-7f6e-6587-4ef6-4e2d-">2.把远程桌面的用户加入到配置文件中</h4>
+<pre><code><span class="title">vi</span> /etc/sysconfig/vncservers
+</code></pre><p>使用vi编辑器打开配置文件，在文件中添加下面两行命令：</p>
+<pre><code>&lt;&gt;<span class="comment">VNCSERVERS=”1:root”</span> <span class="comment">–指定远程用户</span>
+<span class="comment">VNCSERVERARGS</span><span class="title">[</span><span class="comment">1</span><span class="title">]</span><span class="comment">="</span><span class="literal">-</span><span class="comment">geometry</span> <span class="comment">1024x768"</span>      <span class="literal">-</span><span class="literal">-</span><span class="comment">指定远程桌面分辨率</span>
+</code></pre><h4 id="3-7ed9-4f60-521a-521a-8bbe-7f6e-7684-8fdc-7a0b-684c-9762-7528-6237-root_-8bbe-7f6e-5bc6-7801-vncpasswd">3.给你刚刚设置的远程桌面用户root 设置密码vncpasswd</h4>
+<h4 id="4-5f00-542f-VNC-7aef-53e3-">4.开启VNC端口</h4>
+<pre><code><span class="title">vi</span> /etc/sysconfig/iptables
+</code></pre><p>使用vi编辑器打开配置文件，在文件中添加下面一行命令：</p>
+<pre><code><span class="literal">-</span><span class="comment">A</span> <span class="comment">INPUT</span> <span class="literal">-</span><span class="comment">m</span> <span class="comment">state</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">state</span> <span class="comment">NEW</span> <span class="literal">-</span><span class="comment">m</span> <span class="comment">tcp</span> <span class="literal">-</span><span class="comment">p</span> <span class="comment">tcp</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">dport</span> <span class="comment">5900:5910</span> <span class="literal">-</span><span class="comment">j</span> <span class="comment">ACCEPT</span>
+</code></pre><h4 id="5-91cd-542f-9632-706b-5899-">5.重启防火墙</h4>
+<pre><code><span class="title">service</span> iptables restart
+</code></pre><h4 id="6-4fee-6539-8fdc-7a0b-684c-9762-663e-793a-914d-7f6e-6587-4ef6-">6.修改远程桌面显示配置文件</h4>
+<pre><code><span class="title">cd</span> ~/.vnc/
+<span class="title">vi</span> xstartup
+</code></pre><p>使用vi编辑器打开配置文件，并进行下列修改：</p>
+<pre><code><span class="comment">#xterm</span> <span class="literal">-</span><span class="comment">geometry</span> <span class="comment">80x24</span><span class="literal">+</span><span class="comment">10</span><span class="literal">+</span><span class="comment">10</span> <span class="literal">-</span><span class="comment">ls</span> <span class="literal">-</span><span class="comment">title</span> <span class="comment">"$VNCDESKTOP</span> <span class="comment">Desktop"</span> <span class="comment">&amp;</span>               <span class="literal">-</span><span class="literal">-</span><span class="comment">将它注释，加#代表注释</span>
+<span class="comment">#twm</span> <span class="comment">&amp;</span>  <span class="literal">-</span><span class="literal">-</span><span class="comment">将它注释</span>
+<span class="comment">gnome</span><span class="literal">-</span><span class="comment">session</span> <span class="comment">&amp;</span>  <span class="literal">-</span><span class="literal">-</span><span class="comment">添加它</span>
+</code></pre><h4 id="7-542f-52a8-vnc-670d-52a1-">7.启动vnc服务</h4>
+<pre><code>/sbin/service vncserver <span class="operator"><span class="keyword">start</span></span>
+</code></pre><h4 id="8-8fdc-7a0b-8fde-63a5-">8.远程连接</h4>
+<p>打开vnc客户端，server框中输入ip:1 (1代表上面配置的远程用户代号，配置文件中可以配置多个远程用户)，这时你便可以轻松的通过友好的远程桌面来控制centOS了。</p>
+<h4 id="9-5f00-673a-81ea-52a8-542f-52a8-vnc">9.开机自动启动vnc</h4>
+<pre><code>vi /etc/rc<span class="preprocessor">.d</span>/rc<span class="preprocessor">.local</span>
+</code></pre><p>使用vi编辑器打开配置文件，并进行下列修改：</p>
+<pre><code><span class="comment">/etc/init</span><span class="string">.</span><span class="comment">d/vncserver</span> <span class="comment">start</span>   <span class="literal">-</span><span class="literal">-</span><span class="comment">新增行</span>
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.fixbeta.com/2012/11/22/2012-11-22-centos6-setup-VNC/" data-id="4oo851ejh5jvimr0" class="article-share-link">Share</a>
+      
+        <a href="http://www.fixbeta.com/2012/11/22/2012-11-22-centos6-setup-VNC/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LINUX/">LINUX</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/VNC/">VNC</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/centos/">centos</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2012/11/26/2012-11-22-could-not-build-the-proxy_headers_hash/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          could not build the proxy_headers_hash
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2012/08/18/2012-08-18-nginx-redirect/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">利用nginx反向代理实现网站更改地址后的重定向</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+</section>
+        
+      </div>
+      <footer id="footer">
+  
+    <aside id="sidebar" class="outer">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Centos/" style="font-size: 16.00px;">Centos</a><a href="/tags/LINUX/" style="font-size: 20.00px;">LINUX</a><a href="/tags/Nginx/" style="font-size: 14.00px;">Nginx</a><a href="/tags/VNC/" style="font-size: 10.00px;">VNC</a><a href="/tags/VPN/" style="font-size: 10.00px;">VPN</a><a href="/tags/WIFI遥控/" style="font-size: 10.00px;">WIFI遥控</a><a href="/tags/centos/" style="font-size: 10.00px;">centos</a><a href="/tags/vi/" style="font-size: 10.00px;">vi</a><a href="/tags/webbench/" style="font-size: 10.00px;">webbench</a><a href="/tags/压力测试/" style="font-size: 10.00px;">压力测试</a><a href="/tags/反向代理/" style="font-size: 12.00px;">反向代理</a><a href="/tags/编程/" style="font-size: 10.00px;">编程</a><a href="/tags/网络/" style="font-size: 14.00px;">网络</a><a href="/tags/运维/" style="font-size: 18.00px;">运维</a>
+    </div>
+  </div>
+
+  
+</aside>
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2013 V2CD.COM<br>
+      Powered by <a href="http://zespia.tw/hexo/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+<script>
+  var disqus_shortname = 'v2cd';
+  
+  var disqus_url = 'http://www.fixbeta.com/2012/11/22/2012-11-22-centos6-setup-VNC/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//go.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script type="text/javascript" src="/js/script.js"></script>
+  </div>
+</body>
+</html>

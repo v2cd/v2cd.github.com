@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Liunx学习笔记之-CentOS Linux防火墙配置及关闭 | FixBeta</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="og:type" content="blog">
+<meta name="og:title" content="Liunx学习笔记之-CentOS Linux防火墙配置及关闭">
+<meta name="og:url" content="http://www.fixbeta.com/2011/07/16/2011-7-16-Linux-firewall-setup/">
+<meta name="og:image">
+<meta name="og:site_name" content="FixBeta">
+<meta name="og:description" content="#/sbin/iptables -I INPUT -p tcp –dport 80 -j ACCEPT
+#/sbin/iptables -I INPUT -p tcp –dport 22 -j ACCEPT
+#/etc/rc.d/init.d/iptables save
+这样重启计算机后,防火墙默认已经开放了80和22端口。
+这里应该也可以不重启计算机：
+#/etc/init.d/iptables">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternative" href="/atom.xml" title="FixBeta" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="http://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">FixBeta</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><input type="submit" value="&#xF002;" class="search-form-submit"><input type="hidden" name="q" value="site:http://www.fixbeta.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-2011-7-16-Linux-firewall-setup" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2011/07/16/2011-7-16-Linux-firewall-setup/" class="article-date">
+  <time datetime="2011-07-16T13:45:36.000Z" itemprop="datePublished">7月 16 2011</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/运维那些事/">运维那些事</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Liunx学习笔记之-CentOS Linux防火墙配置及关闭
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <pre><code><span class="comment">#/sbin/iptables</span> <span class="literal">-</span><span class="comment">I</span> <span class="comment">INPUT</span> <span class="literal">-</span><span class="comment">p</span> <span class="comment">tcp</span> <span class="comment">–dport</span> <span class="comment">80</span> <span class="literal">-</span><span class="comment">j</span> <span class="comment">ACCEPT</span>
+<span class="comment">#/sbin/iptables</span> <span class="literal">-</span><span class="comment">I</span> <span class="comment">INPUT</span> <span class="literal">-</span><span class="comment">p</span> <span class="comment">tcp</span> <span class="comment">–dport</span> <span class="comment">22</span> <span class="literal">-</span><span class="comment">j</span> <span class="comment">ACCEPT</span>
+<span class="comment">#/etc/rc</span><span class="string">.</span><span class="comment">d/init</span><span class="string">.</span><span class="comment">d/iptables</span> <span class="comment">save</span>
+</code></pre><p><a id="more"></a><br>这样重启计算机后,防火墙默认已经开放了80和22端口。</p>
+<p>这里应该也可以不重启计算机：</p>
+<pre><code><span class="preprocessor">#/etc/init.d/iptables restart</span>
+</code></pre><p>防火墙的关闭，关闭其服务即可：</p>
+<p>查看防火墙信息：</p>
+<pre><code><span class="preprocessor">#/etc/init.d/iptables status</span>
+</code></pre><p>关闭防火墙服务：</p>
+<pre><code><span class="preprocessor">#/etc/init.d/iptables stop</span>
+</code></pre><p>永久关闭？不知道怎么个永久法：</p>
+<pre><code><span class="preprocessor">#chkconfig –level 35 iptables off</span>
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.fixbeta.com/2011/07/16/2011-7-16-Linux-firewall-setup/" data-id="zx3xlgaji4hpgzaf" class="article-share-link">Share</a>
+      
+        <a href="http://www.fixbeta.com/2011/07/16/2011-7-16-Linux-firewall-setup/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Centos/">Centos</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LINUX/">LINUX</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/运维/">运维</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2011/08/26/2011-08-26-server2003-build-VPN/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          windows2003搭建VPN服务器步骤记录
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2011/04/29/2011-04-29-wifi-car-source/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Wifi小车下位机程序源码</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+</section>
+        
+      </div>
+      <footer id="footer">
+  
+    <aside id="sidebar" class="outer">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Centos/" style="font-size: 16.00px;">Centos</a><a href="/tags/LINUX/" style="font-size: 20.00px;">LINUX</a><a href="/tags/Nginx/" style="font-size: 14.00px;">Nginx</a><a href="/tags/VNC/" style="font-size: 10.00px;">VNC</a><a href="/tags/VPN/" style="font-size: 10.00px;">VPN</a><a href="/tags/WIFI遥控/" style="font-size: 10.00px;">WIFI遥控</a><a href="/tags/centos/" style="font-size: 10.00px;">centos</a><a href="/tags/vi/" style="font-size: 10.00px;">vi</a><a href="/tags/webbench/" style="font-size: 10.00px;">webbench</a><a href="/tags/压力测试/" style="font-size: 10.00px;">压力测试</a><a href="/tags/反向代理/" style="font-size: 12.00px;">反向代理</a><a href="/tags/编程/" style="font-size: 10.00px;">编程</a><a href="/tags/网络/" style="font-size: 14.00px;">网络</a><a href="/tags/运维/" style="font-size: 18.00px;">运维</a>
+    </div>
+  </div>
+
+  
+</aside>
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2013 V2CD.COM<br>
+      Powered by <a href="http://zespia.tw/hexo/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+<script>
+  var disqus_shortname = 'v2cd';
+  
+  var disqus_url = 'http://www.fixbeta.com/2011/07/16/2011-7-16-Linux-firewall-setup/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//go.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script type="text/javascript" src="/js/script.js"></script>
+  </div>
+</body>
+</html>
