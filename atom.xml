@@ -4,7 +4,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://www.fixbeta.com/"/>
-  <updated>2014-01-01T12:50:58.651Z</updated>
+  <updated>2014-01-01T13:19:41.641Z</updated>
   <id>http://www.fixbeta.com/</id>
   
   <author>
@@ -19,13 +19,15 @@
     <link href="http://www.fixbeta.com/2013/12/07/n7100-update-to-android43/"/>
     <id>http://www.fixbeta.com/2013/12/07/n7100-update-to-android43/</id>
     <published>2013-12-07T07:46:33.000Z</published>
-    <updated>2013-12-07T07:57:14.000Z</updated>
+    <updated>2014-01-01T13:08:52.000Z</updated>
     <content type="html"><![CDATA[<p>港版N7100 android4.3升级姗姗来迟。不知为什么，OTA升级一直不成功，只有自己动手刷一体包了，版本：ZSUEMK3，注意刷入前和刷入后双wipe。</p>
 <p><img src="http://ww4.sinaimg.cn/bmiddle/c536583fjw1ebb6noczwtj20k00zk418.jpg" alt="N7100"><br><a id="more"></a></p>
 <p><img src="http://ww1.sinaimg.cn/bmiddle/c536583fjw1ebb6npc93aj20k00zkwg4.jpg" alt="N7100"></p>
 ]]></content>
     <summary type="html"><![CDATA[<p>港版N7100 android4.3升级姗姗来迟。不知为什么，OTA升级一直不成功，只有自己动手刷一体包了，版本：ZSUEMK3，注意刷入前和刷入后双wipe。</p>
 <p><img src="http://ww4.sinaimg.cn/bmiddle/c536583fjw1ebb6noczwtj20k00zk418.jpg" alt="N7100"><br>]]></summary>
+    
+      <category term="android" scheme="http://www.fixbeta.com/tags/android/"/>
     
   </entry>
   
