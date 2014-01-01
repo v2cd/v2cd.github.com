@@ -1,0 +1,642 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title><![CDATA[FixBeta]]></title>
+  
+  <link href="/atom.xml" rel="self"/>
+  <link href="http://www.fixbeta.com/"/>
+  <updated>2014-01-01T12:10:14.033Z</updated>
+  <id>http://www.fixbeta.com/</id>
+  
+  <author>
+    <name><![CDATA[V2CD.COM]]></name>
+    <email><![CDATA[5968188@gmail.com]]></email>
+  </author>
+  
+  <generator uri="http://zespia.tw/hexo/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[牛二升级到android4.3]]></title>
+    <link href="http://www.fixbeta.com/2013/12/07/n7100-update-to-android43/"/>
+    <id>http://www.fixbeta.com/2013/12/07/n7100-update-to-android43/</id>
+    <published>2013-12-07T07:46:33.000Z</published>
+    <updated>2013-12-07T07:57:14.000Z</updated>
+    <content type="html"><![CDATA[<p>港版N7100 android4.3升级姗姗来迟。不知为什么，OTA升级一直不成功，只有自己动手刷一体包了，版本：ZSUEMK3，注意刷入前和刷入后双wipe。</p>
+<p><img src="http://ww4.sinaimg.cn/bmiddle/c536583fjw1ebb6noczwtj20k00zk418.jpg" alt="N7100"><br><a id="more"></a></p>
+<p><img src="http://ww1.sinaimg.cn/bmiddle/c536583fjw1ebb6npc93aj20k00zkwg4.jpg" alt="N7100"></p>
+]]></content>
+    <summary type="html"><![CDATA[<p>港版N7100 android4.3升级姗姗来迟。不知为什么，OTA升级一直不成功，只有自己动手刷一体包了，版本：ZSUEMK3，注意刷入前和刷入后双wipe。</p>
+<p><img src="http://ww4.sinaimg.cn/bmiddle/c536583fjw1ebb6noczwtj20k00zk418.jpg" alt="N7100"><br>]]></summary>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[could not build the proxy_headers_hash]]></title>
+    <link href="http://www.fixbeta.com/2012/11/26/2012-11-22-could-not-build-the-proxy_headers_hash/"/>
+    <id>http://www.fixbeta.com/2012/11/26/2012-11-22-could-not-build-the-proxy_headers_hash/</id>
+    <published>2012-11-26T13:45:36.000Z</published>
+    <updated>2013-12-06T02:41:00.000Z</updated>
+    <content type="html"><![CDATA[<p>当NGINX启动时。提示以下错误:</p>
+<pre><code>[emerg]: could <span class="keyword">not</span> build the proxy_headers_hash, 
+you should increase either   <span class="attribute">proxy_headers_hash_max_size</span>: <span class="number">512</span> <span class="keyword">or</span> <span class="attribute">proxy_headers_hash_bucket_size</span>: <span class="number">64</span>
+</code></pre><p>解决办法：<br><a id="more"></a></p>
+<p>把以下二行代码加在HTTP里面即可。</p>
+<pre><code>proxy_headers_<span class="built_in">hash</span>_bucket_size <span class="number">1024</span>;
+proxy_headers_<span class="built_in">hash</span>_max_size <span class="number">512</span>;
+</code></pre>]]></content>
+    <summary type="html"><![CDATA[<p>当NGINX启动时。提示以下错误:</p>
+<pre><code>[emerg]: could <span class="keyword">not</span> build the proxy_headers_hash, 
+you should increase either   <span class="attribute">proxy_headers_hash_max_size</span>: <span class="number">512</span> <span class="keyword">or</span> <span class="attribute">proxy_headers_hash_bucket_size</span>: <span class="number">64</span>
+</code></pre><p>解决办法：<br>]]></summary>
+    
+      <category term="网络" scheme="http://www.fixbeta.com/tags/%E7%BD%91%E7%BB%9C/"/>
+    
+      <category term="运维" scheme="http://www.fixbeta.com/tags/%E8%BF%90%E7%BB%B4/"/>
+    
+      <category term="Nginx" scheme="http://www.fixbeta.com/tags/Nginx/"/>
+    
+      <category term="Centos" scheme="http://www.fixbeta.com/tags/Centos/"/>
+    
+      <category term="LINUX" scheme="http://www.fixbeta.com/tags/LINUX/"/>
+    
+      <category term="关于网络" scheme="http://www.fixbeta.com/categories/%E5%85%B3%E4%BA%8E%E7%BD%91%E7%BB%9C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[Linux学习笔记之-CentOS 6安装和配置VNC]]></title>
+    <link href="http://www.fixbeta.com/2012/11/22/2012-11-22-centos6-setup-VNC/"/>
+    <id>http://www.fixbeta.com/2012/11/22/2012-11-22-centos6-setup-VNC/</id>
+    <published>2012-11-22T13:45:36.000Z</published>
+    <updated>2013-12-06T02:40:16.000Z</updated>
+    <content type="html"><![CDATA[<p>VNC是Linux上的一款非常优秀的远程控制工具软件，通常我们在Windows上面安装vnc客户端软件来远程访问Linux机器(Windows上常用的客户端RealVNC)，要远程连接到Linux首先要确保Linux上面已经安装了VNC server，下面以CentOS 6为例来说明：</p>
+<a id="more"></a>
+
+<h4 id="1-67e5-770b-672c-673a-662f-5426-6709-5b89-88c5-vnc">1.查看本机是否有安装vnc</h4>
+<pre><code><span class="comment">rpm</span> <span class="literal">-</span><span class="comment">q</span> <span class="comment">vnc</span> <span class="comment">vnc</span><span class="literal">-</span><span class="comment">server</span>
+</code></pre><p>如果显示结果为：</p>
+<pre><code><span class="package"><span class="keyword">package</span> <span class="title">vnc</span> <span class="title">is</span> <span class="title">not</span> <span class="title">installed</span>
+<span class="title">vnc</span>-<span class="title">server</span>-4.1.2-14.<span class="title">e15_3</span>.1</span>
+</code></pre><p>么，机器上已经安装了vnc。</p>
+<h4 id="2-628a-8fdc-7a0b-684c-9762-7684-7528-6237-52a0-5165-5230-914d-7f6e-6587-4ef6-4e2d-">2.把远程桌面的用户加入到配置文件中</h4>
+<pre><code><span class="title">vi</span> /etc/sysconfig/vncservers
+</code></pre><p>使用vi编辑器打开配置文件，在文件中添加下面两行命令：</p>
+<pre><code>&lt;&gt;<span class="comment">VNCSERVERS=”1:root”</span> <span class="comment">–指定远程用户</span>
+<span class="comment">VNCSERVERARGS</span><span class="title">[</span><span class="comment">1</span><span class="title">]</span><span class="comment">="</span><span class="literal">-</span><span class="comment">geometry</span> <span class="comment">1024x768"</span>      <span class="literal">-</span><span class="literal">-</span><span class="comment">指定远程桌面分辨率</span>
+</code></pre><h4 id="3-7ed9-4f60-521a-521a-8bbe-7f6e-7684-8fdc-7a0b-684c-9762-7528-6237-root_-8bbe-7f6e-5bc6-7801-vncpasswd">3.给你刚刚设置的远程桌面用户root 设置密码vncpasswd</h4>
+<h4 id="4-5f00-542f-VNC-7aef-53e3-">4.开启VNC端口</h4>
+<pre><code><span class="title">vi</span> /etc/sysconfig/iptables
+</code></pre><p>使用vi编辑器打开配置文件，在文件中添加下面一行命令：</p>
+<pre><code><span class="literal">-</span><span class="comment">A</span> <span class="comment">INPUT</span> <span class="literal">-</span><span class="comment">m</span> <span class="comment">state</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">state</span> <span class="comment">NEW</span> <span class="literal">-</span><span class="comment">m</span> <span class="comment">tcp</span> <span class="literal">-</span><span class="comment">p</span> <span class="comment">tcp</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">dport</span> <span class="comment">5900:5910</span> <span class="literal">-</span><span class="comment">j</span> <span class="comment">ACCEPT</span>
+</code></pre><h4 id="5-91cd-542f-9632-706b-5899-">5.重启防火墙</h4>
+<pre><code><span class="title">service</span> iptables restart
+</code></pre><h4 id="6-4fee-6539-8fdc-7a0b-684c-9762-663e-793a-914d-7f6e-6587-4ef6-">6.修改远程桌面显示配置文件</h4>
+<pre><code><span class="title">cd</span> ~/.vnc/
+<span class="title">vi</span> xstartup
+</code></pre><p>使用vi编辑器打开配置文件，并进行下列修改：</p>
+<pre><code><span class="comment">#xterm</span> <span class="literal">-</span><span class="comment">geometry</span> <span class="comment">80x24</span><span class="literal">+</span><span class="comment">10</span><span class="literal">+</span><span class="comment">10</span> <span class="literal">-</span><span class="comment">ls</span> <span class="literal">-</span><span class="comment">title</span> <span class="comment">"$VNCDESKTOP</span> <span class="comment">Desktop"</span> <span class="comment">&amp;</span>               <span class="literal">-</span><span class="literal">-</span><span class="comment">将它注释，加#代表注释</span>
+<span class="comment">#twm</span> <span class="comment">&amp;</span>  <span class="literal">-</span><span class="literal">-</span><span class="comment">将它注释</span>
+<span class="comment">gnome</span><span class="literal">-</span><span class="comment">session</span> <span class="comment">&amp;</span>  <span class="literal">-</span><span class="literal">-</span><span class="comment">添加它</span>
+</code></pre><h4 id="7-542f-52a8-vnc-670d-52a1-">7.启动vnc服务</h4>
+<pre><code>/sbin/service vncserver <span class="operator"><span class="keyword">start</span></span>
+</code></pre><h4 id="8-8fdc-7a0b-8fde-63a5-">8.远程连接</h4>
+<p>打开vnc客户端，server框中输入ip:1 (1代表上面配置的远程用户代号，配置文件中可以配置多个远程用户)，这时你便可以轻松的通过友好的远程桌面来控制centOS了。</p>
+<h4 id="9-5f00-673a-81ea-52a8-542f-52a8-vnc">9.开机自动启动vnc</h4>
+<pre><code>vi /etc/rc<span class="preprocessor">.d</span>/rc<span class="preprocessor">.local</span>
+</code></pre><p>使用vi编辑器打开配置文件，并进行下列修改：</p>
+<pre><code><span class="comment">/etc/init</span><span class="string">.</span><span class="comment">d/vncserver</span> <span class="comment">start</span>   <span class="literal">-</span><span class="literal">-</span><span class="comment">新增行</span>
+</code></pre>]]></content>
+    <summary type="html"><![CDATA[<p>VNC是Linux上的一款非常优秀的远程控制工具软件，通常我们在Windows上面安装vnc客户端软件来远程访问Linux机器(Windows上常用的客户端RealVNC)，要远程连接到Linux首先要确保Linux上面已经安装了VNC server，下面以CentOS 6为例来说明：</p>
+]]></summary>
+    
+      <category term="centos" scheme="http://www.fixbeta.com/tags/centos/"/>
+    
+      <category term="LINUX" scheme="http://www.fixbeta.com/tags/LINUX/"/>
+    
+      <category term="VNC" scheme="http://www.fixbeta.com/tags/VNC/"/>
+    
+      <category term="关于网络" scheme="http://www.fixbeta.com/categories/%E5%85%B3%E4%BA%8E%E7%BD%91%E7%BB%9C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[利用nginx反向代理实现网站更改地址后的重定向]]></title>
+    <link href="http://www.fixbeta.com/2012/08/18/2012-08-18-nginx-redirect/"/>
+    <id>http://www.fixbeta.com/2012/08/18/2012-08-18-nginx-redirect/</id>
+    <published>2012-08-18T13:45:36.000Z</published>
+    <updated>2013-12-06T02:39:35.000Z</updated>
+    <content type="html"><![CDATA[<p>这是我工作中遇到的一个问题，网站改版后更改了服务器，而新服务器没有开放80端口，这种情况下可以在原来的服务器上利用nginx搭建反向代理，重定向到新的地址。<br><a id="more"></a></p>
+<h4 id="-8fd9-6837-505a-7684-4f18-70b9-662f-ff1a-">这样做的优点是：</h4>
+<p>1.无需更改域名的A记录，A记录还指向原来的地址。</p>
+<p>2.无需更改备案信息，网站IP改变后需要重新提交备案信息，不仅麻烦而且时间长，一不小心备案还可能通不过，这样域名还是指向原来地址，备案登记的地址没变，所以也省了这个麻烦。</p>
+<p>3.最重要的一点，在网络上隐藏了真实的网站地址，在网站访问者和网站真实服务器之间架设了一个中转站，提高了网站的安全性，减少了恶意攻击带来的风险，保证了网站数据的安全。</p>
+<h4 id="-5b9e-65bd-8fc7-7a0b-5982-4e0b-3a-">实施过程如下:</h4>
+<p>1.在原来服务器上安装nginx并配置反向代理，建议在原来服务器安装Linux并配置nginx。nginx在linux下可以充分发挥其最大性能，这是windows版nginx不能比的，强烈建议生产环境下安装linux版nginx,windows版的nginx可以当做测试环境下学习nginx配置来用，不建议用于生产环境。</p>
+<p>安装过程请参考：Centos5.5 安装nginx1.0.8配置反向代理</p>
+<p>2.配置nginx.conf:</p>
+<pre><code> <span class="title">server</span> { <span class="title">listen</span> <span class="number">80</span>; <span class="title">server_name</span> www.test.com; <span class="title">location</span> / { <span class="title">proxy_pass</span> <span class="url">http://123.123.123.123:8080</span>; <span class="title">access_log</span> <span class="built_in">off</span>;}}
+</code></pre>]]></content>
+    <summary type="html"><![CDATA[<p>这是我工作中遇到的一个问题，网站改版后更改了服务器，而新服务器没有开放80端口，这种情况下可以在原来的服务器上利用nginx搭建反向代理，重定向到新的地址。<br>]]></summary>
+    
+      <category term="网络" scheme="http://www.fixbeta.com/tags/%E7%BD%91%E7%BB%9C/"/>
+    
+      <category term="运维" scheme="http://www.fixbeta.com/tags/%E8%BF%90%E7%BB%B4/"/>
+    
+      <category term="Nginx" scheme="http://www.fixbeta.com/tags/Nginx/"/>
+    
+      <category term="反向代理" scheme="http://www.fixbeta.com/tags/%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86/"/>
+    
+      <category term="关于网络" scheme="http://www.fixbeta.com/categories/%E5%85%B3%E4%BA%8E%E7%BD%91%E7%BB%9C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[Linux学习笔记之-利用webbench进行网站压力测试]]></title>
+    <link href="http://www.fixbeta.com/2011/11/09/2011-11-09-nginx-command/"/>
+    <id>http://www.fixbeta.com/2011/11/09/2011-11-09-nginx-command/</id>
+    <published>2011-11-09T13:45:36.000Z</published>
+    <updated>2013-12-06T02:38:58.000Z</updated>
+    <content type="html"><![CDATA[<p>webbench是linux下网站进行压力测试的一个工具，最多可以模拟3万个并发连接去测试网站的负载能力，比Apache自带的ab压力测试工具好，安装使用也比较方便。<br><a id="more"></a></p>
+<p>1.安装：</p>
+<p>安装前首先需要安装gcc和ctags</p>
+<pre><code><span class="title">yum</span> install gcc*    安装ctags
+<span class="title">yum</span> install ctags   安装webbench
+<span class="title">wget</span> http://blog.s135.com/soft/linux/webbench/webbench-<span class="number">1.5</span>.tar.gztar zxvf webbench-<span class="number">1.5</span>.tar.gz 
+<span class="title">cd</span> webbench-<span class="number">1.5</span>
+<span class="title">make</span> mkdir /usr/local/man 
+<span class="title">make</span> install
+</code></pre><p>2.使用方法：</p>
+<pre><code><span class="comment">webbench</span> <span class="literal">-</span><span class="comment">c</span> <span class="comment">500</span> <span class="literal">-</span><span class="comment">t</span> <span class="comment">30</span> <span class="comment">http://127</span><span class="string">.</span><span class="comment">0</span><span class="string">.</span><span class="comment">0</span><span class="string">.</span><span class="comment">1/test</span><span class="string">.</span><span class="comment">jpg参数说明：</span><span class="literal">-</span><span class="comment">c表示并发数，</span><span class="literal">-</span><span class="comment">t表示时间(秒)</span>
+</code></pre>]]></content>
+    <summary type="html"><![CDATA[<p>webbench是linux下网站进行压力测试的一个工具，最多可以模拟3万个并发连接去测试网站的负载能力，比Apache自带的ab压力测试工具好，安装使用也比较方便。<br>]]></summary>
+    
+      <category term="压力测试" scheme="http://www.fixbeta.com/tags/%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95/"/>
+    
+      <category term="LINUX" scheme="http://www.fixbeta.com/tags/LINUX/"/>
+    
+      <category term="运维" scheme="http://www.fixbeta.com/tags/%E8%BF%90%E7%BB%B4/"/>
+    
+      <category term="webbench" scheme="http://www.fixbeta.com/tags/webbench/"/>
+    
+      <category term="关于网络" scheme="http://www.fixbeta.com/categories/%E5%85%B3%E4%BA%8E%E7%BD%91%E7%BB%9C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[Linux学习笔记之-Centos5.5 安装nginx1.0.8配置反向代理]]></title>
+    <link href="http://www.fixbeta.com/2011/09/29/2011-09-29-linux-setup-nginx/"/>
+    <id>http://www.fixbeta.com/2011/09/29/2011-09-29-linux-setup-nginx/</id>
+    <published>2011-09-29T13:45:36.000Z</published>
+    <updated>2013-12-06T02:38:14.000Z</updated>
+    <content type="html"><![CDATA[<p>这是我安装nginx配置反向代理的过程，记下来备忘。<br><a id="more"></a></p>
+<h4 id="1-3001-5b89-88c5-gcc">1、安装gcc</h4>
+<pre><code><span class="title">yum</span> install gcc*
+</code></pre><h4 id="2-3001-5b89-88c5-pcre-7b49-7c7b-5e93-6587-4ef6-">2、安装pcre等类库文件</h4>
+<p>下载地址:</p>
+<pre><code><span class="label">http:</span>//ftp<span class="preprocessor">.exim</span><span class="preprocessor">.llorien</span><span class="preprocessor">.org</span>/pcre/pcre-<span class="number">8.10</span><span class="preprocessor">.tar</span><span class="preprocessor">.bz</span>2
+</code></pre><p>解压：</p>
+<pre><code>tar jxvf pcre-<span class="number">8.10</span><span class="preprocessor">.tar</span><span class="preprocessor">.bz</span>2
+</code></pre><p>安装：</p>
+<pre><code>./configure
+<span class="title">make</span>             
+<span class="title">make</span> install
+</code></pre><h4 id="3-3001-4e0b-8f7d-nginx">3、下载nginx</h4>
+<pre><code> http://nginx<span class="preprocessor">.org</span>/download/nginx-<span class="number">1.0</span><span class="number">.8</span><span class="preprocessor">.tar</span><span class="preprocessor">.gz</span>
+</code></pre><p> 解压：</p>
+<pre><code> tar xzvf nginx-<span class="number">1.0</span><span class="number">.8</span><span class="preprocessor">.tar</span><span class="preprocessor">.gz</span>
+</code></pre><p> 安装：</p>
+<pre><code> ./configure
+<span class="title">make</span>             
+<span class="title">make</span> install
+</code></pre><h4 id="4-3001-4fee-6539-nginx-conf">4、修改nginx.conf</h4>
+<pre><code><span class="comment">#user  nobody;</span>
+<span class="title">worker_processes</span>  <span class="number">1</span>;
+
+<span class="comment">#error_log  logs/error.log;</span>
+<span class="comment">#error_log  logs/error.log  notice;</span>
+<span class="comment">#error_log  logs/error.log  info;</span>
+
+<span class="comment">#pid        logs/nginx.pid;</span>
+
+
+<span class="title">events</span> {
+<span class="title">worker_connections</span>  <span class="number">1024</span>;
+}
+
+
+<span class="title">http</span> {
+<span class="title">include</span>       mime.types;
+<span class="title">include</span>       proxy.conf;    
+<span class="title">default_type</span>  application/octet-stream;
+
+<span class="comment">#log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '</span>
+<span class="comment">#                  '$status $body_bytes_sent "$http_referer" '</span>
+<span class="comment">#                  '"$http_user_agent" "$http_x_forwarded_for"';</span>
+
+<span class="comment">#access_log  logs/access.log  main;</span>
+
+<span class="title">sendfile</span>        <span class="built_in">on</span>;
+<span class="comment">#tcp_nopush     on;</span>
+
+<span class="comment">#keepalive_timeout  0;</span>
+<span class="title">keepalive_timeout</span>  <span class="number">65</span>;
+
+<span class="comment">#gzip  on;</span>
+
+<span class="title">server</span> {
+    <span class="title">listen</span>       <span class="number">80</span>;
+    <span class="title">server_name</span>  localhost;
+
+    <span class="comment">#charset koi8-r;</span>
+
+    <span class="comment">#access_log  logs/host.access.log  main;</span>
+
+    <span class="title">location</span> / {
+        <span class="title">root</span>   html;
+        <span class="title">index</span>  index.html index.htm;
+    }
+
+    <span class="comment">#error_page  404              /404.html;</span>
+
+    <span class="comment"># redirect server error pages to the static page /50x.html</span>
+    <span class="comment">#</span>
+    <span class="title">error_page</span>   <span class="number">500</span> <span class="number">502</span> <span class="number">503</span> <span class="number">504</span>  /50x.html;
+    <span class="title">location</span> = /50x.html {
+        <span class="title">root</span>   html;
+    }
+
+    <span class="comment"># proxy the PHP scripts to Apache listening on 127.0.0.1:80</span>
+    <span class="comment">#</span>
+    <span class="comment">#location ~ \.php$ {</span>
+    <span class="comment">#    proxy_pass   http://127.0.0.1;</span>
+    <span class="comment">#}</span>
+
+    <span class="comment"># pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000</span>
+    <span class="comment">#</span>
+    <span class="comment">#location ~ \.php$ {</span>
+    <span class="comment">#    root           html;</span>
+    <span class="comment">#    fastcgi_pass   127.0.0.1:9000;</span>
+    <span class="comment">#    fastcgi_index  index.php;</span>
+    <span class="comment">#    fastcgi_param  SCRIPT_FILENAME  /scripts$fastcgi_script_name;</span>
+    <span class="comment">#    include        fastcgi_params;</span>
+    <span class="comment">#}</span>
+
+    <span class="comment"># deny access to .htaccess files, if Apache's document root</span>
+    <span class="comment"># concurs with nginx's one</span>
+    <span class="comment">#</span>
+    <span class="comment">#location ~ /\.ht {</span>
+    <span class="comment">#    deny  all;</span>
+    <span class="comment">#}</span>
+}
+
+
+<span class="comment"># another virtual host using mix of IP-, name-, and port-based configuration</span>
+<span class="comment">#</span>
+<span class="comment">#server {</span>
+<span class="comment">#    listen       8000;</span>
+<span class="comment">#    listen       somename:8080;</span>
+<span class="comment">#    server_name  somename  alias  another.alias;</span>
+
+<span class="comment">#    location / {</span>
+<span class="comment">#        root   html;</span>
+<span class="comment">#        index  index.html index.htm;</span>
+<span class="comment">#    }</span>
+<span class="comment">#}</span>
+
+
+<span class="comment"># HTTPS server</span>
+<span class="comment">#</span>
+<span class="comment">#server {</span>
+<span class="comment">#    listen       443;</span>
+<span class="comment">#    server_name  localhost;</span>
+
+<span class="comment">#    ssl                  on;</span>
+<span class="comment">#    ssl_certificate      cert.pem;</span>
+<span class="comment">#    ssl_certificate_key  cert.key;</span>
+
+<span class="comment">#    ssl_session_timeout  5m;</span>
+
+<span class="comment">#    ssl_protocols  SSLv2 SSLv3 TLSv1;</span>
+<span class="comment">#    ssl_ciphers  HIGH:!aNULL:!MD5;</span>
+<span class="comment">#    ssl_prefer_server_ciphers   on;</span>
+
+<span class="comment">#    location / {</span>
+<span class="comment">#        root   html;</span>
+<span class="comment">#        index  index.html index.htm;</span>
+<span class="comment">#    }</span>
+<span class="comment">#}</span>
+<span class="title">server</span> { <span class="title">listen</span> <span class="number">80</span>; <span class="title">server_name</span> www.xxx.com; <span class="title">location</span> / { <span class="title">proxy_pass</span> <span class="url">http://www.123.com:xx</span>; }}
+}
+</code></pre><h4 id="5-3001-65b0-5efa-proxy-conf-6587-4ef6-ff1a-">5、新建proxy.conf文件：</h4>
+<pre><code><span class="title">proxy_redirect</span>     <span class="built_in">off</span>;
+<span class="title">proxy_set_header</span> Host <span class="variable">$host</span>;
+<span class="title">proxy_set_header</span> X-Real-IP <span class="variable">$remote_addr</span>;
+<span class="title">proxy_set_header</span> REMOTE-HOST <span class="variable">$remote_addr</span>;
+<span class="title">proxy_set_header</span> X-Forwarded-For <span class="variable">$remote_addr</span>;
+<span class="title">proxy_set_header</span> X-Forwarded-For   <span class="variable">$proxy_add_x_forwarded_for</span>;
+<span class="title">proxy_headers_hash_max_size</span> <span class="number">51200</span>;
+<span class="title">proxy_headers_hash_bucket_size</span> <span class="number">6400</span>;
+<span class="title">client_max_body_size</span>    <span class="number">10m</span>;
+<span class="title">client_body_buffer_size</span>    <span class="number">128k</span>;
+<span class="title">proxy_connect_timeout</span>   <span class="number">90</span>;
+<span class="title">proxy_send_timeout</span>      <span class="number">90</span>;
+<span class="title">proxy_read_timeout</span>      <span class="number">90</span>;
+<span class="title">proxy_buffer_size</span>         <span class="number">32k</span>;
+<span class="title">proxy_buffers</span>             <span class="number">4</span> <span class="number">32k</span>;
+<span class="title">proxy_busy_buffers_size</span> <span class="number">64k</span>;
+<span class="title">proxy_temp_file_write_size</span> <span class="number">64k</span>;
+<span class="title">proxy_ignore_client_abort</span> <span class="built_in">on</span>;
+<span class="title">proxy_next_upstream</span> <span class="built_in">error</span> timeout invalid_header http_500 http_503 http_404;
+<span class="title">proxy_max_temp_file_size</span> <span class="number">128m</span>;
+</code></pre><h4 id="6-3001-542f-52a8-_nginx">6、启动 nginx</h4>
+<pre><code>/usr/<span class="keyword">local</span>/nginx/sbin/nginx
+</code></pre><h4 id="7-3001-67e5-770b-7ed3-679c-">7、查看结果</h4>
+<pre><code><span class="comment">ps</span> <span class="literal">-</span><span class="comment">ef|grep</span> <span class="comment">nginx</span>
+</code></pre><h4 id="8-3001-8bbe-7f6e-5f00-673a-81ea-52a8-542f-52a8-">8、设置开机自动启动</h4>
+<pre><code>vi /etc/rc.<span class="keyword">local</span>
+</code></pre><p>在最后面加入：</p>
+<pre><code>/usr/<span class="keyword">local</span>/nginx/sbin/nginx
+</code></pre><p>保存退出，然后重启服务器试试nginx是不是自动启动 。</p>
+]]></content>
+    <summary type="html"><![CDATA[<p>这是我安装nginx配置反向代理的过程，记下来备忘。<br>]]></summary>
+    
+      <category term="Centos" scheme="http://www.fixbeta.com/tags/Centos/"/>
+    
+      <category term="LINUX" scheme="http://www.fixbeta.com/tags/LINUX/"/>
+    
+      <category term="Nginx" scheme="http://www.fixbeta.com/tags/Nginx/"/>
+    
+      <category term="反向代理" scheme="http://www.fixbeta.com/tags/%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86/"/>
+    
+      <category term="关于网络" scheme="http://www.fixbeta.com/categories/%E5%85%B3%E4%BA%8E%E7%BD%91%E7%BB%9C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[windows2003搭建VPN服务器步骤记录]]></title>
+    <link href="http://www.fixbeta.com/2011/08/26/2011-08-26-server2003-build-VPN/"/>
+    <id>http://www.fixbeta.com/2011/08/26/2011-08-26-server2003-build-VPN/</id>
+    <published>2011-08-26T13:45:36.000Z</published>
+    <updated>2013-12-06T02:37:44.000Z</updated>
+    <content type="html"><![CDATA[<p>最近利用win2003搭建了一个VPN服务器，在这里把配置过程记录下来，备忘。</p>
+<p>1.开始-管理工具-路由和远程访问，在列出的本地服务器上点击右键，选择“配置并启用路由和远程访问”。</p>
+<p>2.选择自定义配置，下一步，选择“VPN访问”。下一步点击“是”开始服务。<br><a id="more"></a><br>3.配置VPN服务器。在服务器上点击右键，选择“属性”，在弹出的窗口中选择“IP”标签，在“IP地址指派”中选择“静态地址池”。然后点击“添加”按钮设置IP地址范围，这个IP范围就是VPN局域网内部的虚拟IP地址范围，每个拨入到VPN的服务器都会分配到一个范围内的IP，在虚拟局域网中用这个IP相互访问。这里设置为192.168.200.240-192.168.200.250，一共11个IP，默认的VPN服务器占用第一个IP，所以，192.168.200.240实际上就是这个VPN服务器在虚拟局域网的IP。至此，VPN服务部分配置完毕。</p>
+<p>4.添加VPN用户。每个客户端拨入VPN服务器都需要有一个帐号，默认是windows身份验证，所以要给每个需要拨入到VPN的客户端设置一个用户，并为这个用户制定一个固定的内部虚拟IP以便客户端之间相互访问。<br>在管理工具中的计算机管理里添加用户，先新建一个VPN用户，创建好后，查看这个用户的属性，在“拨入”标签中做相应的设置，远程访问权限设置为“允许访问”，以允许这个用户通过VPN拨入服务器。点选“分配静态IP地址”，并设置一个VPN服务器中静态IP池范围内的一个IP地址，  这里设为192.168.200.241.如果有多个客户端机器要接入VPN，要给每个客户端都新建一个用户，并设定一个虚拟IP地址，各个客户端都使用分配给自己的用户拨入VPN，这样各个客户端每次拨入VPN后都会得到相同的IP。如果用户没设置为“分配静态IP地址”，客户端每次拨入到VPN，VPN服务器会随机给这个客户端分配一个范围内的IP。</p>
+<p>5.配置客户端<br>客户端可以是windows 2003，也可以是Windows XP，也可以是windows7,设置几乎一样，这里以windows7客户端设置为例。<br>右击“网络”选择属性。依次选择”设置新的连接和网络-连接到工作区-使用我的internet连接（VPN）-输入intetnet地址（这里为VPN服务器的公网地址）-输入用户名密码，创建完成。<br>完成后，在控制面板的网络连接中的虚拟专用网络下面可以看到刚才新建的连接。<br>在连接上点击右键，选“属性”，在弹出的窗口中点击“网络”标签，然后选中“internet协议(tcp/ip)”，点击属性按钮，在弹出的窗口中再点击“高级”按钮，把“在远程网络上使用默认网关”前面的勾去掉。如果不去掉这个勾，客户端拨入到VPN后，将使用远程的网络作为默认网关，导 致的后果就是客户端只能连通虚拟局域网，上不了因特网了。</p>
+<p>6.在路由器上做端口映射。由于做的是PPTP VPN，所以需要把1723(TCP)和协议47在路由器允许通过，这样才能连到VPN服务器。<br>至此，VPN搭建完成。</p>
+]]></content>
+    <summary type="html"><![CDATA[<p>最近利用win2003搭建了一个VPN服务器，在这里把配置过程记录下来，备忘。</p>
+<p>1.开始-管理工具-路由和远程访问，在列出的本地服务器上点击右键，选择“配置并启用路由和远程访问”。</p>
+<p>2.选择自定义配置，下一步，选择“VPN访问”。下一步点击“是”开始服务。<br>]]></summary>
+    
+      <category term="网络" scheme="http://www.fixbeta.com/tags/%E7%BD%91%E7%BB%9C/"/>
+    
+      <category term="VPN" scheme="http://www.fixbeta.com/tags/VPN/"/>
+    
+      <category term="关于网络" scheme="http://www.fixbeta.com/categories/%E5%85%B3%E4%BA%8E%E7%BD%91%E7%BB%9C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[Liunx学习笔记之-CentOS Linux防火墙配置及关闭]]></title>
+    <link href="http://www.fixbeta.com/2011/07/16/2011-7-16-Linux-firewall-setup/"/>
+    <id>http://www.fixbeta.com/2011/07/16/2011-7-16-Linux-firewall-setup/</id>
+    <published>2011-07-16T13:45:36.000Z</published>
+    <updated>2013-12-06T02:36:51.000Z</updated>
+    <content type="html"><![CDATA[<pre><code><span class="comment">#/sbin/iptables</span> <span class="literal">-</span><span class="comment">I</span> <span class="comment">INPUT</span> <span class="literal">-</span><span class="comment">p</span> <span class="comment">tcp</span> <span class="comment">–dport</span> <span class="comment">80</span> <span class="literal">-</span><span class="comment">j</span> <span class="comment">ACCEPT</span>
+<span class="comment">#/sbin/iptables</span> <span class="literal">-</span><span class="comment">I</span> <span class="comment">INPUT</span> <span class="literal">-</span><span class="comment">p</span> <span class="comment">tcp</span> <span class="comment">–dport</span> <span class="comment">22</span> <span class="literal">-</span><span class="comment">j</span> <span class="comment">ACCEPT</span>
+<span class="comment">#/etc/rc</span><span class="string">.</span><span class="comment">d/init</span><span class="string">.</span><span class="comment">d/iptables</span> <span class="comment">save</span>
+</code></pre><p><a id="more"></a><br>这样重启计算机后,防火墙默认已经开放了80和22端口。</p>
+<p>这里应该也可以不重启计算机：</p>
+<pre><code><span class="preprocessor">#/etc/init.d/iptables restart</span>
+</code></pre><p>防火墙的关闭，关闭其服务即可：</p>
+<p>查看防火墙信息：</p>
+<pre><code><span class="preprocessor">#/etc/init.d/iptables status</span>
+</code></pre><p>关闭防火墙服务：</p>
+<pre><code><span class="preprocessor">#/etc/init.d/iptables stop</span>
+</code></pre><p>永久关闭？不知道怎么个永久法：</p>
+<pre><code><span class="preprocessor">#chkconfig –level 35 iptables off</span>
+</code></pre>]]></content>
+    <summary type="html"><![CDATA[<pre><code><span class="comment">#/sbin/iptables</span> <span class="literal">-</span><span class="comment">I</span> <span class="comment">INPUT</span> <span class="literal">-</span><span class="comment">p</span> <span class="comment">tcp</span> <span class="comment">–dport</span> <span class="comment">80</span> <span class="literal">-</span><span class="comment">j</span> <span class="comment">ACCEPT</span>
+<span class="comment">#/sbin/iptables</span> <span class="literal">-</span><span class="comment">I</span> <span class="comment">INPUT</span> <span class="literal">-</span><span class="comment">p</span> <span class="comment">tcp</span> <span class="comment">–dport</span> <span class="comment">22</span> <span class="literal">-</span><span class="comment">j</span> <span class="comment">ACCEPT</span>
+<span class="comment">#/etc/rc</span><span class="string">.</span><span class="comment">d/init</span><span class="string">.</span><span class="comment">d/iptables</span> <span class="comment">save</span>
+</code></pre><p>]]></summary>
+    
+      <category term="LINUX" scheme="http://www.fixbeta.com/tags/LINUX/"/>
+    
+      <category term="Centos" scheme="http://www.fixbeta.com/tags/Centos/"/>
+    
+      <category term="运维" scheme="http://www.fixbeta.com/tags/%E8%BF%90%E7%BB%B4/"/>
+    
+      <category term="运维那些事" scheme="http://www.fixbeta.com/categories/%E8%BF%90%E7%BB%B4%E9%82%A3%E4%BA%9B%E4%BA%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[Wifi小车下位机程序源码]]></title>
+    <link href="http://www.fixbeta.com/2011/04/29/2011-04-29-wifi-car-source/"/>
+    <id>http://www.fixbeta.com/2011/04/29/2011-04-29-wifi-car-source/</id>
+    <published>2011-04-29T13:45:36.000Z</published>
+    <updated>2013-12-06T02:50:16.000Z</updated>
+    <content type="html"><![CDATA[<p>Wifi小车下位机程序源码，记下来备忘。</p>
+<a id="more"></a>
+
+<pre><code>#include 
+#include 
+#define uchar unsigned char 
+#define uint unsigned <span class="keyword">int</span> 
+uchar Buffer[<span class="number">4</span>] = {<span class="number">0</span>};      <span class="comment">//从串口接收的数据</span>
+uint i,j;
+sbit LeftLight=P2^<span class="number">1</span>;
+sbit RightLight=P2^<span class="number">2</span>;
+
+/   <span class="variable">**</span><span class="variable">**</span><span class="variable">**</span><span class="variable">**</span><span class="variable">**</span><span class="variable">**</span><span class="variable">**</span><span class="variable">**</span><span class="variable">**</span><span class="variable">**</span><span class="variable">**</span><span class="variable">**</span><span class="variable">**</span><span class="variable">**</span><span class="variable">**</span><span class="variable">**</span><span class="variable">**</span><span class="variable">**</span><span class="variable">**</span><span class="variable">**</span><span class="variable">**</span><span class="variable">**</span><span class="variable">**</span><span class="variable">**</span><span class="variable">**</span><span class="variable">**</span><span class="variable">**</span><span class="variable">**</span><span class="variable">**</span><span class="variable">**</span><span class="variable">**</span><span class="variable">**</span><span class="variable">**</span><span class="variable">**</span>
+* 名称 : Delay_1ms()
+* 功能 : 延时子程序，延时时间为 <span class="number">1</span>ms * x
+* 输入 : x (延时一毫秒的个数)
+* 输出 : 无
+<span class="variable">**</span><span class="variable">**</span><span class="variable">**</span><span class="variable">**</span><span class="variable">**</span><span class="variable">**</span><span class="variable">**</span><span class="variable">**</span><span class="variable">**</span><span class="variable">**</span><span class="variable">**</span><span class="variable">**</span><span class="variable">**</span><span class="variable">**</span><span class="variable">**</span><span class="variable">**</span><span class="variable">**</span><span class="variable">**</span><span class="variable">**</span><span class="variable">**</span><span class="variable">**</span><span class="variable">**</span><span class="variable">**</span><span class="variable">**</span><span class="variable">**</span><span class="variable">**</span><span class="variable">**</span><span class="variable">**</span><span class="variable">**</span><span class="variable">**</span><span class="variable">**</span><span class="variable">**</span><span class="variable">**</span><span class="variable">**</span><span class="variable">**</span><span class="variable">*/</span>
+void Delay_1ms(uint i)<span class="comment">//1ms延时</span>
+{
+    uchar x,j;
+    <span class="keyword">for</span>(j=<span class="number">0</span>;j
+</code></pre>]]></content>
+    <summary type="html"><![CDATA[<p>Wifi小车下位机程序源码，记下来备忘。</p>
+]]></summary>
+    
+      <category term="编程" scheme="http://www.fixbeta.com/tags/%E7%BC%96%E7%A8%8B/"/>
+    
+      <category term="WIFI遥控" scheme="http://www.fixbeta.com/tags/WIFI%E9%81%A5%E6%8E%A7/"/>
+    
+      <category term="瞎折腾" scheme="http://www.fixbeta.com/categories/%E7%9E%8E%E6%8A%98%E8%85%BE/"/>
+    
+      <category term="Fograte的杰作" scheme="http://www.fixbeta.com/categories/%E7%9E%8E%E6%8A%98%E8%85%BE/Fograte%E7%9A%84%E6%9D%B0%E4%BD%9C/"/>
+    
+      <category term="一些代码" scheme="http://www.fixbeta.com/categories/%E7%9E%8E%E6%8A%98%E8%85%BE/Fograte%E7%9A%84%E6%9D%B0%E4%BD%9C/%E4%B8%80%E4%BA%9B%E4%BB%A3%E7%A0%81/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[CentOS 设置命令行界面启动]]></title>
+    <link href="http://www.fixbeta.com/2009/09/24/2009-9-24-Linux-CMD-start/"/>
+    <id>http://www.fixbeta.com/2009/09/24/2009-9-24-Linux-CMD-start/</id>
+    <published>2009-09-24T13:45:36.000Z</published>
+    <updated>2013-12-06T02:35:25.000Z</updated>
+    <content type="html"><![CDATA[<pre><code><span class="title">vi</span> /etc/inittab
+</code></pre><p>找到:</p>
+<pre><code><span class="method">id:</span><span class="method">x:</span><span class="method">initdefault:</span>
+</code></pre><p>我的系统是:</p>
+<pre><code><span class="tag">id</span><span class="pseudo">:5</span><span class="pseudo">:initdefault</span>:
+</code></pre><p>   <a id="more"></a><br>即默认以X11（即图形界面）模式启动。将5改为3即可，即:</p>
+<pre><code><span class="tag">id</span><span class="pseudo">:5</span><span class="pseudo">:initdefault</span>:
+</code></pre><p>按键esc然后：</p>
+<pre><code><span class="title">wq</span>
+</code></pre><p>保存退出，</p>
+<p>然后reboot要想在进入图形界面：</p>
+<pre><code><span class="title">startx</span>
+</code></pre><p>就行了。</p>
+]]></content>
+    <summary type="html"><![CDATA[<pre><code><span class="title">vi</span> /etc/inittab
+</code></pre><p>找到:</p>
+<pre><code><span class="method">id:</span><span class="method">x:</span><span class="method">initdefault:</span>
+</code></pre><p>我的系统是:</p>
+<pre><code><span class="tag">id</span><span class="pseudo">:5</span><span class="pseudo">:initdefault</span>:
+</code></pre><p>   ]]></summary>
+    
+      <category term="Centos" scheme="http://www.fixbeta.com/tags/Centos/"/>
+    
+      <category term="LINUX" scheme="http://www.fixbeta.com/tags/LINUX/"/>
+    
+      <category term="运维" scheme="http://www.fixbeta.com/tags/%E8%BF%90%E7%BB%B4/"/>
+    
+      <category term="运维那些事" scheme="http://www.fixbeta.com/categories/%E8%BF%90%E7%BB%B4%E9%82%A3%E4%BA%9B%E4%BA%8B/"/>
+    
+      <category term="关于网络" scheme="http://www.fixbeta.com/categories/%E8%BF%90%E7%BB%B4%E9%82%A3%E4%BA%9B%E4%BA%8B/%E5%85%B3%E4%BA%8E%E7%BD%91%E7%BB%9C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[Linux学习笔记之-vi命令用法]]></title>
+    <link href="http://www.fixbeta.com/2009/05/28/2009-5-28-vi-how-to/"/>
+    <id>http://www.fixbeta.com/2009/05/28/2009-5-28-vi-how-to/</id>
+    <published>2009-05-28T13:45:36.000Z</published>
+    <updated>2013-12-06T02:33:30.000Z</updated>
+    <content type="html"><![CDATA[<h3 id="-4e00-3001-Unix-7f16-8f91-5668-6982-8ff0-">一、Unix编辑器概述</h3>
+<p>编辑器是使用计算机的重要工具之一，在各种操作系统中，编辑器都是必不可少的部件。Unix及其相似的ix 操作系统系列中，为方便各种用户在各个不同的环境中使用，提供了一系列的ex编辑器，包括 ex, edit,ed 和 vi.其中ex,edit,ed都是行编辑器，现在已很少有人使用，Unix提供他们的原因是考虑到满足各种用户特别是某些终端用户的需要。值得庆幸的是，Unix提供了全屏幕的Vi编辑器，这使我们的工作轻松不少。不少DOS用户抱怨Vi编辑器不象 DOS下的编辑器如edit那么好用，这是因为Vi考虑到各种用户的需要，没有使用某些通用的编辑键（在各个不同的终端机上他们的定义是不同的，在某些终端机上甚至没有这些键）。而是采用状态切换的方法，但这只是习惯的问题，一旦你熟练的使用上了vi你就会觉得它其实也很好用。</p>
+<p><a id="more"></a><br>虽然 Vi采用了状态切换的方法，但电脑的硬件及操作系统多种多样，某些电脑的键盘上没有特定的几个功能键！那麽不就有某些功能不能用了？这个问题在 Unix 系统上也一样，几乎各大电脑厂商都有自己的 Unix 系统，而 vi 的操作方法也会随之有点出入。这里我们采用 PC 的键盘来说明 vi 的操作，但在具体的环境中还要参考相应的资料，这一点是值得注意的。</p>
+<h3 id="-4e8c-3001-Vi-5165-95e8-">二、Vi入门</h3>
+<h4 id="1-3001-8fdb-5165-vi">1、进入vi</h4>
+<p>在系统提示字符(如$、#)下敲入vi ＜档案名称＞，vi 可以自动帮你载入所要编辑的文件或是开启一个新文件（如果该文件不存在或缺少文件名）。进入 vi 后屏幕左方会出现波浪符号，凡是列首有该符号就代表此列目前是空的。</p>
+<h4 id="2-3001-4e24-79cd-6a21-5f0f-">2、两种模式</h4>
+<p>如上所述，vi存在两种模式：指令模式和输入模式。在指令模式下输入的按键将做为指令来处理：如输入 a，vi即认为是在当前位置插入字符。而在输入模式下，vi则把输入的按键当作插入的字符来处理。指令模式切换到输入模式只需键入相应的输入命令即可（如a,A），而要从输入模式切换到指令模式，则需在输入模式下键入ESC键，如果不晓得现在是处於什么模式，可以多按几次 [ESC]，系统如发出哔哔声就表示已处于指令模式下了。<br>付：在指令模式进入输入模式的指令：<br>新增 (append)</p>
+<pre><code><span class="title">a</span> ：从光标所在位置後面开始新增资料，光标後的资料随新增资料向後移动。
+<span class="type">A</span>：从光标所在列最後面的地方开始新增资料。
+</code></pre><p>插入 (insert)</p>
+<pre><code><span class="title">i</span>：从光标所在位置前面开始插入资料，光标後的资料随新增资料向後移动。
+<span class="type">I</span> ：从光标所在列的第一个非空白字元前面开始插入资料。
+</code></pre><p>开始 (open)</p>
+<pre><code><span class="title">o</span> ：在光标所在列下新增一列并进入输入模式。
+<span class="type">O</span>: 在光标所在列上方新增一列并进入输入模式。
+</code></pre><h4 id="3-3001-9000-51fa-vi">3、退出vi</h4>
+<p>在指令模式下键入</p>
+<pre><code><span class="attribute">:q,:q!,</span>
+<span class="attribute">:wq或:x(注意:号），</span>
+</code></pre><p>就会退出vi。其中:wq和:x是存盘退出，而:q是直接退出，如果文件已有新的变化，vi会提示你保存文件而:q命令也会失效，这时你可以用:w命令保存文件后再用:q 退出，或用:wq或:x命令退出，如果你不想保存改变后的文件，你就需要用:q!命令，这个命令将不保存文件而直接退出vi。</p>
+<h4 id="4-3001-57fa-672c-7f16-8f91-">4、基本编辑</h4>
+<p>配合一般键盘上的功能键，像是方向键、[Insert] 、[Delete] 等等，现在你应该已经可以利用 vi 来编辑文件了。当然 vi 还提供其他许许多多功能让文字的处理更为方便。<br>何谓编辑？一般认为是文字的新增、修改以及删除，甚至包括文字区块的搬移、复制等等。先这里介绍 vi 的如何做删除与修改。（注意：在 vi 的原始观念里，输入跟编辑是两码子事。编辑是在指令模式下操作的，先利用指令移动光标来定位要进行编辑的地方，然後才下指令做编辑。）</p>
+<p>删除与修改文件的命令：</p>
+<pre><code><span class="title">x</span>：删除光标所在字符。
+<span class="title">dd</span> ：删除光标所在的列。
+<span class="title">r</span> ：修改光标所在字元，r 後接著要修正的字符。
+<span class="type">R</span>：进入取替换状态，新增文字会覆盖原先文字，直到按 [<span class="type">ESC</span>] 回到指令模式下为止。
+<span class="title">s</span>：删除光标所在字元，并进入输入模式。
+<span class="type">S</span>：删除光标所在的列，并进入输入模式。
+</code></pre><p>其实呢，在PC上根本没有这么麻烦！输入跟编辑都可以在输入模式下完成。例如要删除字元，直接按 [Delete] 不就得了。而插入状态与取代状态可以直接用 [Insert] 切换，犯不着用什麽指令模式的编辑指令。不过就如前面所提到的，这些指令几乎是每台终端机都能用，而不是仅仅在 PC 上。在指令模式下移动光标的基本指令是 h, j, k, l 。想来各位现在也应该能猜到只要直接用 PC 的方向键就可以了，而且无论在指令模式或输入模式下都可以。多容易不是。当然 PC 键盘也有不足之处。有个很好用的指令 u 可以恢复被删除的文字，而 U 指令则可以恢复光标所在列的所有改变。这与某些电脑上的 [Undo] 按键功能相同。</p>
+<h3 id="-4e09-3001-9644-4ef6-ff1a-vi-8be6-7ec6-6307-4ee4-8868-">三、附件：vi详细指令表</h3>
+<h4 id="1-3001-8fdb-5165-vi-7684-547d-4ee4-">1、进入vi的命令</h4>
+<pre><code><span class="title">vi</span> filename: 打开或新建文件，并将光标置于第一行首
+
+<span class="title">vi</span> +n filename: 打开文件，并将光标置于第n行首
+
+<span class="title">vi</span> + filename: 打开文件，并将光标置于最后一行首
+
+<span class="title">vi</span> +/pattern filename: 打开文件，并将光标置于第一个与pattern匹配的串处
+
+<span class="title">vi</span> -r filename: 在上次正用vi编辑时发生系统崩溃，恢复filename
+
+<span class="title">vi</span> filename….filename: 打开多个文件，依次进行编辑
+</code></pre><h4 id="2-3001-79fb-52a8-5149-6807-7c7b-547d-4ee4-">2、移动光标类命令</h4>
+<pre><code><span class="attribute">h</span>: 光标左移一个字符
+<span class="attribute">l</span>: 光标右移一个字符
+<span class="attribute">space</span>: 光标右移一个字符
+<span class="attribute">Backspace</span>: 光标左移一个字符
+k或Ctrl+<span class="attribute">p</span>: 光标上移一行
+j或Ctrl+<span class="attribute">n</span>: 光标下移一行
+<span class="attribute">Enter</span>: 光标下移一行
+w或W : 光标右移一个字至字首
+b或B : 光标左移一个字至字首
+e或E : 光标右移一个字至字尾
+): 光标移至句尾
+(: 光标移至句首
+}: 光标移至段落开头
+{: 光标移至段落结尾
+<span class="attribute">nG</span>: 光标移至第n行首
+n+: 光标下移n行
+n-: 光标上移n行
+<span class="attribute">n$</span>: 光标移至第n行尾
+<span class="attribute">H</span>: 光标移至屏幕顶行
+<span class="attribute">M</span>: 光标移至屏幕中间行
+<span class="attribute">L</span>: 光标移至屏幕最后行
+<span class="number">0</span>: 光标移至当前行首
+<span class="attribute">$</span>: 光标移至当前行尾
+</code></pre><h4 id="3-3001-5c4f-5e55-7ffb-6eda-7c7b-547d-4ee4-">3、屏幕翻滚类命令</h4>
+<pre><code><span class="attribute">Ctrl+u</span>: <span class="string">向文件首翻半屏</span>
+<span class="attribute">Ctrl+d</span>: <span class="string">向文件尾翻半屏</span>
+<span class="attribute">Ctrl+f</span>: <span class="string">向文件尾翻一屏</span>
+<span class="attribute">Ctrl＋b</span>: <span class="string">向文件首翻一屏</span>
+<span class="attribute">nz</span>: <span class="string">将第n行滚至屏幕顶部，不指定n时将当前行滚至屏幕顶部。</span>
+</code></pre><h4 id="4-3001-63d2-5165-6587-672c-7c7b-547d-4ee4-">4、插入文本类命令</h4>
+<pre><code><span class="attribute">i</span>: <span class="string">在光标前</span>
+<span class="attribute">I</span>: <span class="string">在当前行首</span>
+<span class="attribute">a</span>: <span class="string">光标后</span>
+<span class="attribute">A</span>: <span class="string">在当前行尾</span>
+<span class="attribute">o</span>: <span class="string">在当前行之下新开一行</span>
+<span class="attribute">O</span>: <span class="string">在当前行之上新开一行</span>
+<span class="attribute">r</span>: <span class="string">替换当前字符</span>
+<span class="attribute">R</span>: <span class="string">替换当前字符及其后的字符，直至按ESC键</span>
+<span class="attribute">s</span>: <span class="string">从当前光标位置处开始，以输入的文本替代指定数目的字符</span>
+<span class="attribute">S</span>: <span class="string">删除指定数目的行，并以所输入文本代替之</span>
+<span class="attribute">ncw或nCW</span>: <span class="string">修改指定数目的字</span>
+<span class="attribute">nCC</span>: <span class="string">修改指定数目的行</span>
+</code></pre><h4 id="5-3001-5220-9664-547d-4ee4-">5、删除命令</h4>
+<pre><code><span class="attribute">ndw或ndW</span>: <span class="string">删除光标处开始及其后的n-1个字</span>
+<span class="attribute">do</span>: <span class="string">删至行首</span>
+<span class="attribute">d$</span>: <span class="string">删至行尾</span>
+<span class="attribute">ndd</span>: <span class="string">删除当前行及其后n-1行</span>
+<span class="attribute">x或X</span>: <span class="string">删除一个字符，x删除光标后的，而X删除光标前的</span>
+<span class="attribute">Ctrl+u</span>: <span class="string">删除输入方式下所输入的文本</span>
+</code></pre><h4 id="6-3001-641c-7d22-53ca-66ff-6362-547d-4ee4-">6、搜索及替换命令</h4>
+<pre><code>/pattern: 从光标开始处向文件尾搜索pattern
+?pattern: 从光标开始处向文件首搜索pattern
+n: 在同一方向重复上一次搜索命令
+N: 在反方向上重复上一次搜索命令
+<span class="attribute">:s/p1/p2/g:</span> 将当前行中所有p1均用p2替代
+<span class="attribute">:n1,n2s/p1/p2/g:</span> 将第n1至n2行中所有p1均用p2替代
+<span class="attribute">:g/p1/s//p2/g:</span> 将文件中所有p1均用p2替换
+</code></pre>]]></content>
+    <summary type="html"><![CDATA[<h3 id="-4e00-3001-Unix-7f16-8f91-5668-6982-8ff0-">一、Unix编辑器概述</h3>
+<p>编辑器是使用计算机的重要工具之一，在各种操作系统中，编辑器都是必不可少的部件。Unix及其相似的ix 操作系统系列中，为方便各种用户在各个不同的环境中使用，提供了一系列的ex编辑器，包括 ex, edit,ed 和 vi.其中ex,edit,ed都是行编辑器，现在已很少有人使用，Unix提供他们的原因是考虑到满足各种用户特别是某些终端用户的需要。值得庆幸的是，Unix提供了全屏幕的Vi编辑器，这使我们的工作轻松不少。不少DOS用户抱怨Vi编辑器不象 DOS下的编辑器如edit那么好用，这是因为Vi考虑到各种用户的需要，没有使用某些通用的编辑键（在各个不同的终端机上他们的定义是不同的，在某些终端机上甚至没有这些键）。而是采用状态切换的方法，但这只是习惯的问题，一旦你熟练的使用上了vi你就会觉得它其实也很好用。</p>
+<p>]]></summary>
+    
+      <category term="vi" scheme="http://www.fixbeta.com/tags/vi/"/>
+    
+      <category term="LINUX" scheme="http://www.fixbeta.com/tags/LINUX/"/>
+    
+      <category term="运维" scheme="http://www.fixbeta.com/tags/%E8%BF%90%E7%BB%B4/"/>
+    
+      <category term="运维那些事" scheme="http://www.fixbeta.com/categories/%E8%BF%90%E7%BB%B4%E9%82%A3%E4%BA%9B%E4%BA%8B/"/>
+    
+      <category term="关于网络" scheme="http://www.fixbeta.com/categories/%E8%BF%90%E7%BB%B4%E9%82%A3%E4%BA%9B%E4%BA%8B/%E5%85%B3%E4%BA%8E%E7%BD%91%E7%BB%9C/"/>
+    
+  </entry>
+  
+</feed>
