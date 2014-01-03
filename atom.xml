@@ -4,7 +4,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://www.fixbeta.com/"/>
-  <updated>2014-01-01T13:19:41.641Z</updated>
+  <updated>2014-01-03T13:31:56.026Z</updated>
   <id>http://www.fixbeta.com/</id>
   
   <author>
@@ -474,6 +474,20 @@ void Delay_1ms(uint i)<span class="comment">//1ms延时</span>
       <category term="Fograte的杰作" scheme="http://www.fixbeta.com/categories/%E7%9E%8E%E6%8A%98%E8%85%BE/Fograte%E7%9A%84%E6%9D%B0%E4%BD%9C/"/>
     
       <category term="一些代码" scheme="http://www.fixbeta.com/categories/%E7%9E%8E%E6%8A%98%E8%85%BE/Fograte%E7%9A%84%E6%9D%B0%E4%BD%9C/%E4%B8%80%E4%BA%9B%E4%BB%A3%E7%A0%81/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[JDK各版本下载地址]]></title>
+    <link href="http://www.fixbeta.com/2010/09/24/2010-9-24-JDK-Download/"/>
+    <id>http://www.fixbeta.com/2010/09/24/2010-9-24-JDK-Download/</id>
+    <published>2010-09-24T13:45:36.000Z</published>
+    <updated>2014-01-03T13:30:07.000Z</updated>
+    <content type="html"><![CDATA[<p>  N次google,baidu后，终于找到了JDK各版本的官方下载地址<br><a href="http://www.oracle.com/technetwork/java/javasebusiness/downloads/java-archive-downloads-javase6-419409.html" target="_blank">http://www.oracle.com/technetwork/java/javasebusiness/downloads/java-archive-downloads-javase6-419409.html</a></p>
+]]></content>
+    
+    
+      <category term="JDK" scheme="http://www.fixbeta.com/tags/JDK/"/>
     
   </entry>
   
